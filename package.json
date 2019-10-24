@@ -17,6 +17,6 @@
   "scripts": {
     "start": "babel-node index.js",
     "nodemon": "nodemon --exec yarn start",
-    "lint": "eslint index.js"
+    "lint": "eslint index.js src"
   }
 }
