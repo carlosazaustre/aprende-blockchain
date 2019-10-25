@@ -1,6 +1,7 @@
 import WebSocket from 'ws';
 
-const { P2P_PORT = 5000 } = process.env;
+const { P2P_PORT = 5000, PEERS } = process.env;
+const peers = PEERS ? PEERS.split(',') : [];
 
 class P2PService {
   constructor(blockchain) {
@@ -11,6 +12,11 @@ class P2PService {
   listen() {
     const server = new WebSocket.Server({ port: P2P_PORT });
     server.on('connection', (socket) => this.onConnection(socket));
+
+    peers.forEach((peer) => {
+      const socket = new WebSocket(peer);
+      socket.on('open', () => this.onConnection(socket));
+    });
 
     console.log(`Service ws:${P2P_PORT} listening...`);
   }
