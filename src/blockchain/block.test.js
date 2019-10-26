@@ -27,9 +27,10 @@ describe('Block', () => {
 
   it('use static mine()', () => {
     const block = Block.mine(previousBlock, data);
+    const { difficulty } = block;
 
     expect(block.hash.length).toEqual(64);
-    expect(block.hash.substring(0, DIFFICULTY)).toEqual('0'.repeat(DIFFICULTY));
+    expect(block.hash.substring(0, difficulty)).toEqual('0'.repeat(difficulty));
     expect(block.previousHash).toEqual(previousBlock.hash);
     expect(block.nonce).not.toEqual(0);
     expect(block.data).toEqual(data);
@@ -37,7 +38,7 @@ describe('Block', () => {
 
   it('use static hash()', () => {
     hash = Block.hash(timestamp, previousBlock.hash, data, nonce);
-    const hashOutput = 'd53e819003111e42627e9e8b85947688a63ff3df53952cfd24f4e619064e7e47';
+    const hashOutput = '40ceb71e6e4d87cebbd1901826d2e98a7898e5c5ff30efed3fd5b5aba7b668e8';
 
     expect(hash).toEqual(hashOutput);
   });
