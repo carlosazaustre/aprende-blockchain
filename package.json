@@ -21,7 +21,8 @@
     "nodemon": "nodemon --exec yarn start",
     "lint": "eslint index.js src",
     "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "miner": "babel-node miner.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",

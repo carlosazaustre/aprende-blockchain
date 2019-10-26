@@ -45,7 +45,6 @@ describe('Block', () => {
 
   it('use toString()', () => {
     const block = Block.mine(previousBlock, data);
-    console.log(block.toString());
 
     expect(typeof block.toString()).toEqual('string');
   });
