@@ -1,6 +1,5 @@
 import Blockchain from '../blockchain';
 import validate from './validate';
-import Block from '../block';
 
 describe('validate()', () => {
   let blockchain;
