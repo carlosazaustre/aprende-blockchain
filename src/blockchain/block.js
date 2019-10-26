@@ -17,7 +17,6 @@ class Block {
   }
 
   static mine(previousBlock, data) {
-    const timestamp = Date.now();
     const { hash: previousHash } = previousBlock;
     let hash;
     let nonce = 0;
@@ -29,9 +28,9 @@ class Block {
       hash = Block.hash(timestamp, previousHash, data, nonce);
     } while (hash.substring(0, DIFFICULTY) !== '0'.repeat(DIFFICULTY));
 
-    return new this(timestamp, previousHash, hash, data);
+    return new this(timestamp, previousHash, hash, data, nonce);
   }
- 
+
   static hash(timestamp, previousHash, data, nonce) {
     return SHA256(`${timestamp}${previousHash}${data}${nonce}`).toString();
   }
@@ -51,4 +50,5 @@ class Block {
   }
 }
 
+export { DIFFICULTY };
 export default Block;
