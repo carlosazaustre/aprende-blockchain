@@ -19,4 +19,5 @@ class Wallet {
   }
 }
 
+export { INITIAL_BALANCE };
 export default Wallet;
