@@ -1,10 +1,13 @@
+import Elliptic from 'elliptic';
+
+const ec = Elliptic.ec('secp256k1');
 const INITIAL_BALANCE = 100;
 
 class Wallet {
   constructor() {
     this.balance = INITIAL_BALANCE;
-    this.keyPair = null;
-    this.publicKey = null;
+    this.keyPair = ec.genKeyPair();
+    this.publicKey = this.keyPair.getPublic().encode('hex');
   }
 
   toString() {
