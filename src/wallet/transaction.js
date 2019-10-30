@@ -18,6 +18,13 @@ class Transaction {
       { amount, address: recipientAddress },
     ]);
 
+    transaction.input = {
+      timestamp: Date.now(),
+      amount: senderWallet.balance,
+      address: senderWallet.publicKey,
+      signature: senderWallet.sign(transaction.outputs),
+    };
+
     return transaction;
   }
 }
